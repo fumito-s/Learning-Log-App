@@ -15,9 +15,7 @@ fun LearningLogApp() {
     LearningLogTheme {
         LearningLogScaffold {
             NavHost(navController, startDestination = "main") {
-                composable("main") {
-                    Greeting("Droid")
-                }
+                composable("main") { Greeting("Droid") }
             }
         }
     }
