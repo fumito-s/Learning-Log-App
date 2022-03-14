@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.fumito.learninglog.ui.components.LearningLogScaffold
+import com.fumito.learninglog.ui.components.MainScreen
 import com.fumito.learninglog.ui.theme.LearningLogTheme
 
 @Composable
@@ -15,13 +16,8 @@ fun LearningLogApp() {
     LearningLogTheme {
         LearningLogScaffold {
             NavHost(navController, startDestination = "main") {
-                composable("main") { Greeting("Droid") }
+                composable("main") { MainScreen() }
             }
         }
     }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
 }
