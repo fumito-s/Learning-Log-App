@@ -27,8 +27,6 @@ fun MainScreen() {
 
 @Composable
 fun LogGraph() {
-    // change list to  card composable
-    // 7-52
     val list = List(365) { 1 }
     LazyVerticalGrid(
         cells = GridCells.Fixed(7),
