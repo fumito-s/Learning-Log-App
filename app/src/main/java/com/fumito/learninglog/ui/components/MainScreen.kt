@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import java.util.*
 
 @Composable
 fun MainScreen() {
@@ -27,7 +28,7 @@ fun MainScreen() {
 
 @Composable
 fun LogGraph() {
-    val list = List(365) { 1 }
+    val list = List(365) { LogItem() }
     LazyVerticalGrid(
         cells = GridCells.Fixed(7),
         modifier = Modifier
@@ -35,20 +36,25 @@ fun LogGraph() {
             .padding(60.dp)
     ) {
         items(list) { item ->
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(10.dp))
-                    .border(
-                        width = 2.dp,
-                        color = Color.Gray,
-                        shape = RoundedCornerShape(10.dp)
-                    )
-                    .size(50.dp)
-                    .background(color = Color.White),
-            ) {
-                Text(text = item.toString())
-            }
+            LogCell(item = item)
         }
+    }
+}
+
+@Composable
+fun LogCell(item: LogItem) {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(10.dp))
+            .border(
+                width = 2.dp,
+                color = Color.Gray,
+                shape = RoundedCornerShape(10.dp)
+            )
+            .size(50.dp)
+            .background(color = Color.White),
+    ) {
+        Text(text = item.commit.toString())
     }
 }
 
@@ -57,3 +63,9 @@ fun LogGraph() {
 fun MainScreenPreview() {
     MainScreen()
 }
+
+// あとで移す
+data class LogItem(
+    val date: Date = Date(),
+    val commit: Int = 1
+)
